@@ -10,6 +10,7 @@ function App() {
         <h1>VitalSim</h1>
         <div>
           <button>Allow Access to FitBit</button>
+          <GetFitBitData className="js"></GetFitBitData>
         </div>
       </header>
     </>
