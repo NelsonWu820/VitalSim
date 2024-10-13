@@ -56,7 +56,7 @@ const ResultFitBit = () => {
           })
             .then((res) => res.json())
             .then((data) => setHeartRateLastMonth(data['activities-heart'][0]))
-            .catch((error) => console.error('Error fetching last month heart rate:', error));
+            .catch((error) => console.error('Error fetching last month heart rate:', error)); 
       }
     }, [token]);
   
@@ -67,6 +67,7 @@ const ResultFitBit = () => {
                 <p>Age: {profile.age}</p>
                 <p>Gender: {profile.gender}</p>
                 <img src={profile.avatar} alt="Avatar" />
+                {heartRateToday && heartRateToday.value ? (
                 <div>
                     <h2>Heart Rate Today ({heartRateToday.dateTime}):</h2>
                     <ul>
@@ -77,6 +78,13 @@ const ResultFitBit = () => {
                         ))}
                     </ul>
                 </div>
+            ) : (
+                <div>
+                    <h2>No Heart Rate Data for Today</h2>
+                </div>
+            )}
+
+            {heartRateLastMonth && heartRateLastMonth.value ? (
                 <div>
                     <h2>Heart Rate Last Month ({heartRateLastMonth.dateTime}):</h2>
                     <ul>
@@ -87,6 +95,12 @@ const ResultFitBit = () => {
                         ))}
                     </ul>
                 </div>
+            ) : (
+                <div>
+                    <h2>No Heart Rate Data for Last Month</h2>
+                </div>
+            )}
+
             </div>
          ) : (
             <p>Loading</p>
